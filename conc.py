@@ -2,8 +2,10 @@
 
 # a and b defines as the value in y = ax + b
 
-a = 0.0008
-b = 0.0309
+#a = 0.0008
+#b = 0.0309
+a = 0.7774
+b = 0.02
 
 def isnumeric(value):
   return str(value).replace(".", "").replace("-", "").isdigit()

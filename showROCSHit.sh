@@ -25,11 +25,10 @@ showZinc ()
     # extract the ZINC ID
     local zincID=`cat $1 | grep ZINC | head -$2 | tail -1 | awk '{print $2}' | sed 's/ZINC\([0-9]*\)_.*/\1/'`
     
-    # print the ID in Terminal
-    echo $zincID
+    # copy the ID on clipboard and print the ID in Terminal
     
-    # copy the ID on clipboard
     echo $zincID | pbcopy
+    echo $zincID
     
     # open the ZINC webpage in Safari
     open -a Safari http://zinc.docking.org/substance/$zincID

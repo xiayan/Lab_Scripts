@@ -46,9 +46,11 @@ def main():
         total_residue = pose1.total_residue()
 
         kabsch_alignment(pose1, pose2, range(1, total_residue + 1), range(1, total_residue + 1))
+        # RMSD calculated by my own function
         for i in range(1, total_residue + 1):
             calculateRMS(pose1, pose2, i, output, show_index)
-
+    
+    # RMSD calculated by PyRosetta
     ro_rmsd = rosetta.CA_rmsd(pose1, pose2)
     print "rosetta generated rmsd: " + str(ro_rmsd)
 

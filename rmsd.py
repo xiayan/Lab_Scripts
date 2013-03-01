@@ -1,3 +1,5 @@
+#!/usr/bin/python2.5
+
 import rosetta, sys
 from structural_alignment import kabsch_alignment
 
