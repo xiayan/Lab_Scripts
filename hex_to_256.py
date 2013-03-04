@@ -88,6 +88,12 @@ def BestMatch(hexval):
             bestdist = dist
     return best
 
+def main():
+    code =  raw_input("Enter hex color code(without #): ")
+    print BestMatch(code)
+
+if __name__=='__main__': main()
+
 ##                  1   2             3   4        5      6
 #fg = re.compile(r'^(.*)(ctermfg=)NONE(.*)(guifg=#)([^ ]*)(.*)\n$')
 #bg = re.compile(r'^(.*)(ctermbg=)NONE(.*)(guibg=#)([^ ]*)(.*)\n$')
