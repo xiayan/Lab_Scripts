@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from pylab import *
-#from pprint import pprint
+from matplotlib import rcParams
+from pprint import pprint
 import sys
 
 def main():
@@ -22,7 +23,7 @@ def main():
             result.append((diff, label))
 
     result.sort(key = lambda tup : tup[0], reverse = True)
-    #pprint(result)
+    pprint(result)
 
     T, F = 0, 0
     x, y = [0.0], [0.0]
@@ -44,9 +45,15 @@ def main():
         old_y = y[i]
     print "Area under curve is: %.3f" % area
 
-    plot(x, y, 'bo-', c = 'g', linewidth = 3.5)
+    # Plotting
+    # set up the font
+    rcParams['font.family'] = 'sans-serif'
+    rcParams['font.sans-serif'] = 'Lucida Grande'
+    rcParams['axes.labelsize'] = 14
+
+    plot(x, y, marker = 'o', markersize = 4.0, linestyle = 'solid', c = '#000000', linewidth = 2.0)
     t = np.arange(0.0, 1.2, 0.2)
-    plot(t, t, 'r--', linewidth = 2.0)
+    plot(t, t, c = '#990000', linestyle = 'dashed', linewidth = 2.0)
     xlabel("False Positive Rate")
     ylabel("True Positive Rate")
     ylim([0, 1.01])
