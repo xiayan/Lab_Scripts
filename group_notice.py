@@ -114,9 +114,10 @@ def main():
     
     msg = genCurrentWeekMsg(gmCName, jcCName)
     msg = msg + genNextWeekMsg(gmNName, jcNName)
-    #emails = json_data['rotation']['emails']
+    emails = json_data['rotation']['emails']
     #emails = ['drseanxy@mac.com']
-    emails = ['KARANICOLAS-LAB@listproc.cc.ku.edu']
+    #emails = ['KARANICOLAS-LAB@listproc.cc.ku.edu']
+    #emails = ['karanicolas-lab@ku.edu']
     
     sent = False
     for i in range(3):

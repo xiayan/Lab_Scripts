@@ -4,6 +4,7 @@ from pylab import *
 from matplotlib import rcParams
 from pprint import pprint
 import sys
+from itertools import permutations
 
 def main():
     filename = sys.argv[1]
@@ -42,8 +43,25 @@ def main():
         width = x[i] - old_x
         area += width * y[i]
         old_x = x[i]
-        old_y = y[i]
     print "Area under curve is: %.3f" % area
+    
+    counter = 0
+    better = 0
+    perm = permutations(x)
+    for p in perm:
+        o_x = 0.0
+        a   = 0.0
+        for i in range(len(p)):
+            w = p[i] - o_x
+            a += w * y[i]
+            o_x = x[i]
+        counter += 1
+        # print "area: %.3f" % a
+        if a > area:
+            better += 1
+        if counter >= 10000: break
+
+    print "%d out of %d random assignments are better." % (better, counter)
 
     # Plotting
     # set up the font
