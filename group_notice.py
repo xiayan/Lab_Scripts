@@ -26,9 +26,9 @@ def genCurrentWeekMsg(gmName, jcName):
     
     if gmName != 'No' and jcName != 'No':
         if gmName != jcName:
-            msg = msg + "have %s for group meeting and %s for journal club" % (gmName, jcName)
+            msg = msg + "have %s for group meeting at 12 PM and %s for journal club afterwards on Wednesday" % (gmName, jcName)
         else:
-            msg = msg + "have %s for both group meeting and journal club" % (gmName)
+            msg = msg + "have %s for both group meeting and journal club starting at 12 PM on Wednesday" % (gmName)
     elif gmName == 'No' and jcName == 'No':
         msg = msg + "don't have group meeting nor journal club"
     elif gmName == 'No':

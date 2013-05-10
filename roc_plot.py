@@ -9,7 +9,7 @@ from itertools import permutations
 def main():
     filename = sys.argv[1]
     input = open(filename, 'r')
-    
+
     result = []
     wt_score = 0.0
     for line in input:
@@ -36,7 +36,7 @@ def main():
 
     x = [a / (F + 0.0) for a in x]
     y = [b / (T + 0.0) for b in y]
-    
+
     old_x = 0.0
     area = 0.0
     for i in range(len(x)):
@@ -44,24 +44,6 @@ def main():
         area += width * y[i]
         old_x = x[i]
     print "Area under curve is: %.3f" % area
-    
-    counter = 0
-    better = 0
-    perm = permutations(x)
-    for p in perm:
-        o_x = 0.0
-        a   = 0.0
-        for i in range(len(p)):
-            w = p[i] - o_x
-            a += w * y[i]
-            o_x = x[i]
-        counter += 1
-        # print "area: %.3f" % a
-        if a > area:
-            better += 1
-        if counter >= 10000: break
-
-    print "%d out of %d random assignments are better." % (better, counter)
 
     # Plotting
     # set up the font
@@ -71,7 +53,7 @@ def main():
 
     plot(x, y, marker = 'o', markersize = 4.0, linestyle = 'solid', c = '#000000', linewidth = 2.0)
     t = np.arange(0.0, 1.2, 0.2)
-    
+
     plot(t, t, c = '#990000', linestyle = 'dashed', linewidth = 2.0)
     xlabel("False Positive Rate")
     ylabel("True Positive Rate")
