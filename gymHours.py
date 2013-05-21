@@ -39,9 +39,9 @@ def getMessage(s, today):
         b, e = getTd(s, 0)
         info = s[b:e + len('<td')]
         #print info
-        
+
         dtCount = info.count('<dt')
-        
+
         start, end = 0, 0
         for i in range(dtCount):
             start = info.find('<dt', start)
@@ -79,7 +79,7 @@ def getMessage(s, today):
 
         info1 = m1.group(1)
         message = m2.group(1)
-        
+
         dates = info1.split('-')
         if len(dates) == 1:
             if dates[0].lower().strip() not in week.keys():
@@ -95,7 +95,7 @@ def getMessage(s, today):
                 print info1
                 return -1, -1, None
             return week[d1], week[d2], message
-        
+
     return -1, -1, None
 
 
@@ -107,7 +107,7 @@ def main():
     #print date
     #today = 517
     #date = 5
-    
+
     infile = urllib2.urlopen('http://www.recreation.ku.edu/~recserv/hours.shtml')
     #inp = open('sample.html', 'r')
     info = '\n'.join(infile.readlines())
@@ -163,7 +163,7 @@ def main():
             print datetime.datetime(*time_struct[0:6]).strftime('%b %d %Y, %A')
             print message
             break
-        
+
     infile.close()
 
 main()
