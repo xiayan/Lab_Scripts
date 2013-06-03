@@ -55,7 +55,7 @@ def getMessage(s, today):
             message = m.group(1).split()
             for i in range(len(message)):
                 word = message[i]
-                if word.lower() in month.keys():
+                if word.lower() in month.keys() and i != len(message)-1:
                     localDay = month[word.lower()] * 100 + eval(message[i+1])
                     if localDay == today:
                         return -1, month[word.lower()] * 100 + eval(message[i+1]), \
