@@ -22,25 +22,28 @@ def sendGroupMail(msg, emails):
     smtpserver.close()
 
 def genCurrentWeekMsg(gmName, jcName):
+    time = '10:15 AM'
+    day = 'Tuesday'
+
     msg = "Hi all,\n\nThis is a reminder that we "
-    
+
     if gmName != 'No' and jcName != 'No':
         if gmName != jcName:
-            msg = msg + "have %s for group meeting and %s for journal club starting at 12 PM on Thursday" % (gmName, jcName)
+            msg = msg + "have %s for group meeting and %s for journal club starting at %s on %s" % (gmName, jcName, time, day)
         else:
-            msg = msg + "have %s for both group meeting and journal club starting at 12 PM on Thursday" % (gmName)
+            msg = msg + "have %s for both group meeting and journal club starting at %s on %s" % (gmName, time, day)
     elif gmName == 'No' and jcName == 'No':
         msg = msg + "don't have group meeting nor journal club"
     elif gmName == 'No':
-        msg = msg + "have %s for journal club but no group meeting" % (jcName)
+        msg = msg + "have %s for journal club but no group meeting starting at %s on %s" % (jcName, time, day)
     elif jcName == 'No':
-        msg = msg + "have %s for group meeting but no journal club" % (gmName)
+        msg = msg + "have %s for group meeting but no journal club starting at %s on %s" % (gmName, time, day)
 
     msg = msg + " this week.\n\n"
     return msg
 
 def genNextWeekMsg(gmName, jcName):
-    msg = 'Next time, '
+    msg = 'Next week, '
     if gmName != 'No' and jcName != 'No':
         if gmName != jcName:
             msg = msg + "%s is up for group meeting and %s is up for journal club." % (gmName, jcName)
@@ -52,7 +55,7 @@ def genNextWeekMsg(gmName, jcName):
         msg = msg + "%s is up for journal club but we have no group meeting." % (jcName)
     elif jcName == 'No':
         msg = msg + "%s is up for group meeting but we have no journal club." % (gmName)
-    
+
     msg = msg + "\n\nThanks,\n\nThe JK Lab\n"
     return msg
 
@@ -80,19 +83,15 @@ def updateRotation(json_data):
 
     gm_total = len(json_data['rotation']['group_meeting']) - 1
     jc_total = len(json_data['rotation']['journal_club']) - 1
-    
-    if n_g_index == gm_total:
-        n_g_index = (c_g_index + 1) % gm_total
-    else:
+
+    if n_g_index != gm_total:
         n_g_index = (n_g_index + 1) % gm_total
     json_data['rotation']['next_index']['g'] = n_g_index
 
-    if n_j_index == jc_total:
-        n_j_index = (c_j_index + 1) % jc_total
-    else:
+    if n_j_index != jc_total:
         n_j_index = (n_j_index + 1) % jc_total
     json_data['rotation']['next_index']['j'] = n_j_index
-        
+
 def main():
     #connected = False
     # wait for internet connection. Test 3 time, wait for 10 secs in between
@@ -111,17 +110,18 @@ def main():
     input.close()
 
     gmCName, jcCName, gmNName, jcNName = getNames(json_data)
-    
+
     msg = genCurrentWeekMsg(gmCName, jcCName)
     msg = msg + genNextWeekMsg(gmNName, jcNName)
     emails = json_data['rotation']['emails']
+    #emails = json_data['rotation']['test_emails']
     #emails = ['drseanxy@mac.com']
     #emails = ['KARANICOLAS-LAB@listproc.cc.ku.edu']
     #emails = ['karanicolas-lab@ku.edu']
-    
+
     sent = False
     for i in range(3):
-        try: 
+        try:
             sendGroupMail(msg, emails)
         except Exception as err:
             with open("/Users/yanxia/Desktop/log.txt", 'a') as logfile:
@@ -131,7 +131,7 @@ def main():
         else:
             sent = True
             break
-    
+
     if not sent: return
 
     updateRotation(json_data)
