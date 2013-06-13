@@ -15,7 +15,7 @@ def main():
 	while data == "":
 		data = raw_input("Need at least one numeric input: ")
 	readings = data.split()
-    
+
 	while True:
 		allDigit = True
 		for r in readings:
