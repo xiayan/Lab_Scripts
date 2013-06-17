@@ -22,8 +22,8 @@ def sendGroupMail(msg, emails):
     smtpserver.close()
 
 def genCurrentWeekMsg(gmName, jcName):
-    time = '10:15 AM'
-    day = 'Tuesday'
+    time = '12:00 PM'
+    day = 'Thursday'
 
     msg = "Hi all,\n\nThis is a reminder that we "
 
