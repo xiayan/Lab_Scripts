@@ -133,11 +133,11 @@ def main():
             if dateInfo[i].lower() in month.keys():
                 beginning = month[dateInfo[i].lower()] * 100 + eval(dateInfo[i+1])
                 if (dateInfo[i+2] != '-' or\
-                    dateInfo[i+3].lower() not in month.keys()):
+                        dateInfo[i+3].lower() not in month.keys()):
                     ending = beginning
                 else:
                     ending = month[dateInfo[i+3].lower()] * 100 + \
-                             eval(dateInfo[i+4])
+                            eval(dateInfo[i+4])
                 break
 
         if beginning == 0 or ending == 0:
@@ -156,8 +156,8 @@ def main():
                 #print day1, day2, m
 
                 if (day1 == -1 and day2 == today and m != None) or \
-                    (day1 != -1 and date >= day1 and date <= day2 and m != None):
-                        #print "today: ", today, date, day1, day2
+                        (day1 != -1 and date >= day1 and date <= day2 and m != None):
+                            #print "today: ", today, date, day1, day2
                         message = m
 
             print datetime.datetime(*time_struct[0:6]).strftime('%b %d %Y, %A')
