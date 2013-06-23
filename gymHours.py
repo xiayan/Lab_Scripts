@@ -151,9 +151,9 @@ def main():
                 s2, e2 = getEntry(block, s2)
                 entry = block[s2:e2 + len('</tr>')]
                 s2 = e2
-                #print entry
+                # print entry
                 day1, day2, m = getMessage(entry, today)
-                #print day1, day2, m
+                # print day1, day2, m
 
                 if (day1 == -1 and day2 == today and m != None) or \
                         (day1 != -1 and date >= day1 and date <= day2 and m != None):

@@ -10,12 +10,12 @@ def main():
         chain = 'A'
 
     AA = dict([('GLY', 'G'), ('ALA', 'A'), ('SER', 'S'), ('THR', 'T'), ('CYS', 'C'), ('VAL', 'V'), \
-    ('LEU', 'L'), ('ILE', 'I'), ('MET', 'M'), ('PRO', 'P'), ('PHE', 'F'), ('TYR', 'Y'), ('TRP', 'W'), \
-    ('ASP', 'D'), ('GLU', 'E'), ('ASN', 'N'), ('GLN', 'Q'), ('HIS', 'H'), ('LYS', 'K'), ('ARG', 'R'), \
-    ('ACYS', 'C')])
+            ('LEU', 'L'), ('ILE', 'I'), ('MET', 'M'), ('PRO', 'P'), ('PHE', 'F'), ('TYR', 'Y'), ('TRP', 'W'), \
+            ('ASP', 'D'), ('GLU', 'E'), ('ASN', 'N'), ('GLN', 'Q'), ('HIS', 'H'), ('LYS', 'K'), ('ARG', 'R'), \
+            ('ACYS', 'C')])
 
     regex = "^ATOM\s+[0-9]+\s+[A-Z0-9]+\s+[A-Z][A-Z][A-Z]\s+" + \
-    chain +"\s+[0-9]+"
+            chain +"\s+[0-9]+"
 
     inFile = open(fileName, 'r');
     startNum = -1
