@@ -24,20 +24,21 @@ def sendGroupMail(msg, emails):
 def genCurrentWeekMsg(gmName, jcName):
     time = '12:00 PM'
     day = 'Thursday'
+    place = 'Haworth'
 
     msg = "Hi all,\n\nThis is a reminder that we "
 
     if gmName != 'No' and jcName != 'No':
         if gmName != jcName:
-            msg = msg + "have %s for group meeting and %s for journal club starting at %s on %s" % (gmName, jcName, time, day)
+            msg = msg + "have %s for group meeting and %s for journal club starting at %s on %s at %s" % (gmName, jcName, time, day, place)
         else:
-            msg = msg + "have %s for both group meeting and journal club starting at %s on %s" % (gmName, time, day)
+            msg = msg + "have %s for both group meeting and journal club starting at %s on %s at" % (gmName, time, day, place)
     elif gmName == 'No' and jcName == 'No':
         msg = msg + "don't have group meeting nor journal club"
     elif gmName == 'No':
-        msg = msg + "have %s for journal club but no group meeting starting at %s on %s" % (jcName, time, day)
+        msg = msg + "have %s for journal club but no group meeting starting at %s on %s at %s" % (jcName, time, day, place)
     elif jcName == 'No':
-        msg = msg + "have %s for group meeting but no journal club starting at %s on %s" % (gmName, time, day)
+        msg = msg + "have %s for group meeting but no journal club starting at %s on %s at MRB" % (gmName, time, day, place)
 
     msg = msg + " this week.\n\n"
     return msg
@@ -114,10 +115,10 @@ def main():
     msg = genCurrentWeekMsg(gmCName, jcCName)
     msg = msg + genNextWeekMsg(gmNName, jcNName)
     emails = json_data['rotation']['emails']
-    #emails = json_data['rotation']['test_emails']
-    #emails = ['drseanxy@mac.com']
-    #emails = ['KARANICOLAS-LAB@listproc.cc.ku.edu']
-    #emails = ['karanicolas-lab@ku.edu']
+    # emails = json_data['rotation']['test_emails']
+    # emails = ['drseanxy@mac.com']
+    # emails = ['KARANICOLAS-LAB@listproc.cc.ku.edu']
+    # emails = ['karanicolas-lab@ku.edu']
 
     sent = False
     for i in range(3):

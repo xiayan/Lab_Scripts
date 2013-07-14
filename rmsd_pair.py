@@ -1,4 +1,4 @@
-#!/usr/bin/python2.5
+#!/usr/bin/env python
 
 import rosetta
 import sys, os.path, math
@@ -33,8 +33,8 @@ def main():
 
     outputName = wtName.split('.')[0] + '_vs_' + compareName.split('.')[0] + ".txt"
 
-    pose1 = rosetta.Pose(wtName)
-    pose2 = rosetta.Pose(compareName)
+    pose1 = rosetta.pose_from_pdb(wtName)
+    pose2 = rosetta.pose_from_pdb(compareName)
 
     use_me = True
     if pose1.total_residue() != pose2.total_residue():
