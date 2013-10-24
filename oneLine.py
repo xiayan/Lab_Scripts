@@ -22,6 +22,7 @@ def main():
     oneLine = []
 
     for line in inFile:
+        if len(line.split()) < 5: continue
         if line.split()[4] != chain:
             continue;
         if (re.match(regex, line) != None):

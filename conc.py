@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 
 # a and b defines as the value in y = ax + b
+# range is 0ug/ml to 500ug/ml. Reading: 0 to 0.62
 
-#a = 0.0008
-#b = 0.0309
-a = 0.0007774
-b = 0.02
+a = 0.0012
+b = 0.0048
 
 def isnumeric(value):
     return str(value).replace(".", "").replace("-", "").isdigit()
