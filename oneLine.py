@@ -32,6 +32,13 @@ def main():
                 startNum = aaNumber
                 oneLine.append(aaName)
 
-    print "".join([AA[a] for a in oneLine])
+    result = []
+    for a in oneLine:
+        if a in AA.keys():
+            result.append(AA[a])
+        else:
+            result.append('X')
+    # print "".join([AA[a] for a in oneLine])
+    print "".join(result)
 
 main()

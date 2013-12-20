@@ -38,7 +38,7 @@ def genCurrentWeekMsg(gmName, jcName):
     elif gmName == 'No':
         msg = msg + "have %s for journal club but no group meeting starting at %s on %s at %s" % (jcName, time, day, place)
     elif jcName == 'No':
-        msg = msg + "have %s for group meeting but no journal club starting at %s on %s at MRB" % (gmName, time, day, place)
+        msg = msg + "have %s for group meeting but no journal club starting at %s on %s at %s" % (gmName, time, day, place)
 
     msg = msg + " this week.\n\n"
     return msg
@@ -114,9 +114,9 @@ def main():
 
     msg = genCurrentWeekMsg(gmCName, jcCName)
     msg = msg + genNextWeekMsg(gmNName, jcNName)
-    # emails = json_data['rotation']['emails']
+    emails = json_data['rotation']['emails']
     # emails = json_data['rotation']['test_emails']
-    emails = ['drseanxy@mac.com']
+    # emails = ['drseanxy@mac.com']
     # emails = ['KARANICOLAS-LAB@listproc.cc.ku.edu']
     # emails = ['karanicolas-lab@ku.edu']
 
