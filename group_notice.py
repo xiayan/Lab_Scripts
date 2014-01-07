@@ -57,6 +57,7 @@ def genNextWeekMsg(gmName, jcName):
     elif jcName == 'No':
         msg = msg + "%s is up for group meeting but we have no journal club." % (gmName)
 
+    msg = msg + "\n\nThis is an automated message. Please do not reply to this email. If you have any comments or questions, please email karanicolas-lab@ku.edu"
     msg = msg + "\n\nThanks,\n\nThe JK Lab\n"
     return msg
 
