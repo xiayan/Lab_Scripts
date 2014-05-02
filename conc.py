@@ -1,4 +1,7 @@
+"""Calculate concentration from bradford absorbtions"""
 #!/usr/bin/env python
+
+from ast import literal_eval
 
 # a and b defines as the value in y = ax + b
 # range is 0ug/ml to 500ug/ml. Reading: 0 to 0.62
@@ -7,6 +10,7 @@ a = 0.0012
 b = 0.0048
 
 def isnumeric(value):
+    """Test if a string is numeric"""
     return str(value).replace(".", "").replace("-", "").isdigit()
 
 def main():
@@ -16,28 +20,29 @@ def main():
     readings = data.split()
 
     while True:
-        allDigit = True
-        for r in readings:
-            if (not isnumeric(r)):
-                allDigit = False
+        all_digits = True
+        for read in readings:
+            if not isnumeric(read):
+                all_digits = False
                 data = raw_input("Enter all numeric values: ")
                 readings = data.split(' ')
                 break
-        if allDigit:
+        if all_digits:
             break
 
     results = []
-    mw = raw_input("Enter molecular weight: ")
-    if mw == "":
-        moreInfo = False
+    mol_weight = raw_input("Enter molecular weight: ")
+    more_info = False
+    if mol_weight == "":
+        more_info = False
     else:
-        moreInfo = True
+        more_info = True
 
     dilution = raw_input("Enter dilution factor: ")
     if dilution == "":
         dilution = 1
     else:
-        dilution = eval(dilution)
+        dilution = literal_eval(dilution)
 
     if a > 0.09:
         magnitude = 1000000.0
@@ -45,18 +50,18 @@ def main():
     else:
         magnitude = 1000.0
         unit = 'u'
-    for r in readings:
-        conc = (eval(r) - b) / a * dilution
-        if moreInfo:
-            molConc = conc / eval(mw) * magnitude
+    for read in readings:
+        conc = (literal_eval(read) - b) / a * dilution
+        if more_info:
+            mol_conc = conc / literal_eval(mol_weight) * magnitude
         else:
-            molConc = 0.0
-        results.append((conc, molConc))
+            mol_conc = 0.0
+        results.append((conc, mol_conc))
 
-    for (conc, molConc) in results:
+    for (conc, mol_conc) in results:
         print ("%0.2f" %conc) + ' ' + unit + 'g/ml'
-        if moreInfo:
-            print ("%0.2f" %molConc) + ' ' + unit + 'M'
+        if more_info:
+            print ("%0.2f" %mol_conc) + ' ' + unit + 'M'
         print "\n"
 
 main()

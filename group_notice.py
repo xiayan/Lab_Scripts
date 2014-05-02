@@ -22,15 +22,15 @@ def sendGroupMail(msg, emails):
     smtpserver.close()
 
 def genCurrentWeekMsg(gmName, jcName):
-    time = '12:00 PM'
+    time = '1:00 PM'
     day = 'Thursday'
-    place = 'Haworth'
+    place = '8024 Haworth'
 
     msg = "Hi all,\n\nThis is a reminder that we "
 
     if gmName != 'No' and jcName != 'No':
         if gmName != jcName:
-            msg = msg + "have %s for group meeting and %s for journal club starting at %s on %s at %s" % (gmName, jcName, time, day, place)
+            msg = msg + "have %s for group meeting and %s for journal club starting at %s on %s in %s" % (gmName, jcName, time, day, place)
         else:
             msg = msg + "have %s for both group meeting and journal club starting at %s on %s at" % (gmName, time, day, place)
     elif gmName == 'No' and jcName == 'No':
